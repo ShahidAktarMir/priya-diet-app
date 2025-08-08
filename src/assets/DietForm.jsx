@@ -22,7 +22,7 @@ function DietForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-6 rounded shadow">
+    <div className="max-w-lg mx-auto bg-white  flex flex-col p-6 rounded shadow">
       <Input
         name="name"
         value={form.name}
