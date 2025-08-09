@@ -1,4 +1,4 @@
-// src/organisms/DietPDF.jsx
+// src/components/DietPDF.jsx
 import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
@@ -305,10 +305,14 @@ function DietPDF({ data }) {
             <Text style={styles.clientValue}>{data.sex || "Not provided"}</Text>
             <Text style={styles.clientLabel}>Height:</Text>
             <Text style={styles.clientValue}>
-              {data.height || "Not provided"}
+              {data.height ? `${data.height} cm` : "Not provided"}
             </Text>
           </View>
           <View style={styles.clientInfoRow}>
+            <Text style={styles.clientLabel}>Weight:</Text>
+            <Text style={styles.clientValue}>
+              {data.weight ? `${data.weight} kg` : "Not provided"}
+            </Text>
             <Text style={styles.clientLabel}>BMI:</Text>
             <Text style={styles.clientValue}>
               {data.bmi || "Not calculated"}
