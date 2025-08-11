@@ -1,0 +1,20 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="formGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#d946ef;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Subtle background shape -->
+  <path d="M0,150 Q100,50 200,150 T400,150 L400,300 L0,300 Z" fill="url(#formGradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="80" r="20" fill="#3b82f6" opacity="0.06"/>
+  <rect x="320" y="60" width="30" height="30" rx="8" fill="#d946ef" opacity="0.06" transform="rotate(20 335 75)"/>
+  <polygon points="150,40 170,20 190,40 170,60" fill="#06b6d4" opacity="0.05"/>
+  
+  <!-- Connecting lines -->
+  <path d="M70,80 Q150,60 230,80" stroke="#3b82f6" stroke-width="1" fill="none" opacity="0.1"/>
+  <path d="M190,40 Q250,50 320,75" stroke="#d946ef" stroke-width="1" fill="none" opacity="0.08"/>
+</svg>

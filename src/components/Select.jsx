@@ -12,8 +12,8 @@ function Select({
   return (
     <div className="mb-4">
       <select
-        className={`border border-gray-300 p-3 rounded-lg w-full transition-colors duration-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white ${
-          error ? 'border-red-500 bg-red-50' : 'hover:border-gray-400'
+        className={`form-input border-2 border-secondary-200 p-4 rounded-xl w-full transition-all duration-300 focus:border-primary-500 focus:ring-4 focus:ring-primary-100 focus:outline-none bg-white/80 backdrop-blur-sm ${
+          error ? 'border-error-500 bg-error-50/50 focus:border-error-500 focus:ring-error-100' : 'hover:border-secondary-300 hover:bg-white'
         } ${className}`}
         {...register}
         {...props}
@@ -26,7 +26,7 @@ function Select({
         ))}
       </select>
       {error && (
-        <span className="text-red-500 text-sm mt-1 block font-medium">
+        <span className="text-error-600 text-sm mt-2 block font-medium animate-slide-in-up">
           {error.message}
         </span>
       )}
