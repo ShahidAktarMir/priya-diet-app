@@ -297,7 +297,6 @@ function DietForm() {
           </AnimatedSection>
         )}
       </form>
-      </div>
     </div>
   );
 }
