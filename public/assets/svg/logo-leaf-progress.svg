@@ -1,0 +1,73 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main Leaf Shape -->
+  <path d="M32 8C24 8 16 16 16 28C16 40 24 48 32 56C40 48 48 40 48 28C48 16 40 8 32 8Z" 
+        fill="url(#leafGradient)" 
+        filter="url(#glow)"
+        opacity="0.9"/>
+  
+  <!-- Leaf Vein/Stem -->
+  <path d="M32 12L32 52" 
+        stroke="url(#progressGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round"
+        opacity="0.8"/>
+  
+  <!-- Side Veins -->
+  <path d="M32 20L26 26M32 20L38 26" 
+        stroke="url(#progressGradient)" 
+        stroke-width="1.5" 
+        stroke-linecap="round"
+        opacity="0.6"/>
+  
+  <path d="M32 28L24 34M32 28L40 34" 
+        stroke="url(#progressGradient)" 
+        stroke-width="1.5" 
+        stroke-linecap="round"
+        opacity="0.6"/>
+  
+  <!-- Progress Arrow/Checkmark -->
+  <g transform="translate(32, 32)">
+    <!-- Upward Arrow integrated into leaf -->
+    <path d="M-6 2L0 -4L6 2" 
+          stroke="url(#progressGradient)" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none"
+          opacity="0.9"/>
+    
+    <!-- Subtle checkmark element -->
+    <path d="M-3 0L-1 2L3 -2" 
+          stroke="#ffffff" 
+          stroke-width="2" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none"
+          opacity="0.8"/>
+  </g>
+  
+  <!-- Subtle highlight for depth -->
+  <ellipse cx="28" cy="20" rx="4" ry="8" 
+           fill="#ffffff" 
+           opacity="0.2" 
+           transform="rotate(-15 28 20)"/>
+</svg>

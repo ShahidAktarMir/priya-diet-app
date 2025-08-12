@@ -34,22 +34,28 @@ function App() {
         
         {/* Main content with page transitions */}
         <PageTransition transition="fade" duration={500}>
-          <div className="container mx-auto px-4">
-            <AnimatedSection 
-              animation="animate-slide-in-down" 
-              className="text-center py-8"
-            >
-              <h1 className="text-display text-6xl md:text-7xl lg:text-8xl bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 bg-clip-text text-transparent font-bold mb-4">
-                Priya Jana
+          {/* Premium Header */}
+          <header className="flex flex-col items-center justify-center py-8 px-4 bg-white/90 backdrop-blur-sm shadow-soft rounded-b-2xl mb-8 border-b border-white/20">
+            <AnimatedSection animation="animate-scale-in" className="flex flex-col items-center">
+              <img 
+                src="/assets/svg/logo-leaf-progress.svg" 
+                alt="Priya Jana Diet Plan App Logo - Leaf of Progress" 
+                className="w-16 h-16 mb-3 animate-float"
+                style={{ animationDelay: '0.5s' }}
+              />
+              <h1 className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-success-600 to-primary-700 bg-clip-text text-transparent text-center leading-tight">
+                Priya Jana Diet Plan App
               </h1>
-              <p className="text-subheading text-xl md:text-2xl text-secondary-600 max-w-2xl mx-auto">
+              <p className="text-sm md:text-base text-secondary-600 mt-2 text-center max-w-md">
                 Transform Your Health with Personalized Nutrition Plans
               </p>
-              <div className="mt-6 flex justify-center">
-                <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
+              <div className="mt-4 flex justify-center">
+                <div className="w-16 h-1 bg-gradient-to-r from-success-500 to-primary-500 rounded-full animate-pulse-soft" />
               </div>
             </AnimatedSection>
-            
+          </header>
+
+          <div className="container mx-auto px-4">
             <AnimatedSection 
               animation="animate-scale-in" 
               delay={200}
