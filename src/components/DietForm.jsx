@@ -9,8 +9,12 @@ import Select from './Select.jsx';
 import Textarea from './Textarea.jsx';
 import DietPDF from './DietPdf.jsx';
 import AnimatedSection from './AnimatedSection.jsx';
+import { useToast } from '../context/ToastContext.jsx';
+import LoadingSpinner from './LoadingSpinner.jsx';
 
 function DietForm() {
+  const { showSuccess, showError, showWarning, showInfo } = useToast();
+  
   const {
     register,
     handleSubmit,
@@ -43,7 +47,19 @@ function DietForm() {
 
   const onSubmit = (data) => {
     console.log('Form submitted:', data);
-    // You can add additional logic here if needed
+    
+    // Show success toast
+    showSuccess('Diet plan data saved successfully! 🎉', {
+      duration: 4000
+    });
+    
+    // Show info toast about PDF generation
+    setTimeout(() => {
+      showInfo('Click "Generate Diet Plan PDF" to download your personalized plan', {
+        duration: 6000,
+        persistent: false
+      });
+    }, 1000);
   };
 
   const formData = watch();

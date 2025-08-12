@@ -1,9 +1,11 @@
 import React from 'react';
+import LoadingSpinner from './LoadingSpinner';
 
 function Button({ 
   children, 
   onClick, 
   disabled, 
+  loading = false,
   type = "button",
   variant = "primary",
   size = "md",
@@ -27,17 +29,26 @@ function Button({
     xl: "px-10 py-5 text-xl",
   };
 
+  const isDisabled = disabled || loading;
+
   return (
     <button
       type={type}
-      onClick={onClick}
-      disabled={disabled}
+      onClick={loading ? undefined : onClick}
+      disabled={isDisabled}
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${
-        disabled ? 'cursor-not-allowed opacity-50 transform-none' : 'cursor-pointer hover:scale-105 active:scale-95'
+        isDisabled ? 'cursor-not-allowed opacity-50 transform-none' : 'cursor-pointer hover:scale-105 active:scale-95'
       } ${className}`}
       {...props}
     >
-      {children}
+      {loading ? (
+        <div className="flex items-center justify-center">
+          <LoadingSpinner size="sm" color="white" className="mr-2" />
+          <span>Loading...</span>
+        </div>
+      ) : (
+        children
+      )}
     </button>
   );
 }
