@@ -224,6 +224,18 @@ const styles = StyleSheet.create({
 });
 
 function DietPDF({ data }) {
+  // Generate comprehensive metadata
+  const metadata = {
+    title: `Diet Plan - ${data.name || 'Client'}`,
+    author: 'Priya - Certified Nutritionist',
+    subject: 'Personalized Diet Plan',
+    keywords: 'diet, nutrition, meal plan, health, wellness',
+    creator: 'Priya Jana Diet Plan App',
+    producer: 'Priya Jana Diet Plan App v1.0.0',
+    creationDate: new Date(),
+    modificationDate: new Date()
+  };
+
   const currentDate = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -273,7 +285,14 @@ function DietPDF({ data }) {
   ];
 
   return (
-    <Document>
+    <Document
+      title={metadata.title}
+      author={metadata.author}
+      subject={metadata.subject}
+      keywords={metadata.keywords}
+      creator={metadata.creator}
+      producer={metadata.producer}
+    >
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
