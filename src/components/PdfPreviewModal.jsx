@@ -8,7 +8,8 @@ import { useToast } from '../context/ToastContext';
 
 function PdfPreviewModal({ isOpen, onClose, formData }) {
   const [zoomLevel, setZoomLevel] = useState(100);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [pdfLoading, setPdfLoading] = useState(false);
+  const [pdfError, setPdfError] = useState(false);
   const { showSuccess, showError } = useToast();
 
   const zoomLevels = [25, 50, 75, 100, 150];
@@ -17,20 +18,25 @@ function PdfPreviewModal({ isOpen, onClose, formData }) {
     setZoomLevel(level);
   }, []);
 
-  const handleDownloadStart = useCallback(() => {
-    setIsGenerating(true);
-    showSuccess('PDF generation started...', { duration: 2000 });
-  }, [showSuccess]);
+  // Handle toast notifications based on PDF state changes
+  React.useEffect(() => {
+    if (pdfLoading) {
+      showSuccess('PDF generation started...', { duration: 2000 });
+    }
+  }, [pdfLoading, showSuccess]);
 
-  const handleDownloadComplete = useCallback(() => {
-    setIsGenerating(false);
-    showSuccess('PDF downloaded successfully! 🎉', { duration: 4000 });
-  }, [showSuccess]);
+  React.useEffect(() => {
+    if (!pdfLoading && !pdfError) {
+      // PDF generation completed successfully
+      showSuccess('PDF downloaded successfully! 🎉', { duration: 4000 });
+    }
+  }, [pdfLoading, pdfError, showSuccess]);
 
-  const handleDownloadError = useCallback(() => {
-    setIsGenerating(false);
-    showError('Failed to generate PDF. Please try again.', { duration: 5000 });
-  }, [showError]);
+  React.useEffect(() => {
+    if (pdfError) {
+      showError('Failed to generate PDF. Please try again.', { duration: 5000 });
+    }
+  }, [pdfError, showError]);
 
   if (!isOpen) return null;
 
@@ -86,13 +92,11 @@ function PdfPreviewModal({ isOpen, onClose, formData }) {
               className="inline-block"
             >
               {({ loading, error }) => {
-                if (loading && !isGenerating) {
-                  handleDownloadStart();
-                } else if (!loading && isGenerating) {
-                  handleDownloadComplete();
-                } else if (error && isGenerating) {
-                  handleDownloadError();
-                }
+                // Defer state updates to avoid updating during render
+                setTimeout(() => {
+                  setPdfLoading(loading);
+                  setPdfError(!!error);
+                }, 0);
 
                 return (
                   <Button
